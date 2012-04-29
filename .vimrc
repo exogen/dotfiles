@@ -11,7 +11,7 @@ set backspace=indent,eol,start " allow backspacing over everything
 " interface
 set cursorline " highlight the line containing the cursor
 set number     " show line numbers
-set showmode   " show mode (slows down terminal)
+set showmode   " show mode
 
 if has("gui_running")
     set guioptions-=T     " hide the toolbar
