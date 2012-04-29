@@ -1,0 +1,8 @@
+--sort-files
+
+--color-filename=green
+--color-lineno=yellow
+--color-match=red
+
+--type-add=css=less
+--type-add=js=json
