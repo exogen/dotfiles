@@ -83,11 +83,11 @@ function! InsertTabWrapper()
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<Tab>"
     else
-        return "\<C-P>"
+        return "\<C-p>"
     endif
 endfunction
-inoremap <Tab> <C-R>=InsertTabWrapper()<CR>
-inoremap <S-Tab> <C-N>
+inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
+inoremap <S-Tab> <C-n>
 
 " leader
 let mapleader=","
@@ -106,7 +106,7 @@ let g:CommandTMinHeight=8   " don't shrink less than 8 lines
 
 if has("gui_macvim")
     " use ⌘E to activate (keep ⌘T for New Tab)
-    map <D-E> :CommandT<CR>
+    map <D-e> :CommandT<CR>
 
     " flush Command-T buffer when there may be new files
     augroup AutoFlush
