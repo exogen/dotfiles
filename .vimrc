@@ -2,10 +2,10 @@
 " miscellaneous
 
 set nocompatible               " behave in a more useful way
-set autoread                   " read updated files
 set hidden                     " allow hidden buffers
 set esckeys                    " allow arrow keys in insert mode
 set backspace=indent,eol,start " allow backspacing over everything
+set autoread                   " read updated files without prompting
 
 call pathogen#infect()         " activate pathogen.vim
 
@@ -128,8 +128,12 @@ let g:CommandTMaxFiles=2000 " don't scan more than 2000 files (for speed)
 let g:CommandTMaxHeight=8   " don't grow more than 8 lines
 let g:CommandTMinHeight=8   " don't shrink less than 8 lines
 
+" use the default key mappings
+nnoremap <silent> <Leader>t :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+
 if has("gui_macvim")
-    " use ⌘E to activate (keep ⌘T for New Tab)
+    " use ⌘E to activate as well (keep ⌘T for New Tab)
     map <D-e> :CommandT<CR>
 
     " flush buffer when there may be new files
