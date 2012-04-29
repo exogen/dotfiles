@@ -77,18 +77,6 @@ augroup AutoFileType
     autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 augroup END
 
-" use tab for omni completion unless preceded by whitespace
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<Tab>"
-    else
-        return "\<C-p>"
-    endif
-endfunction
-inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
-inoremap <S-Tab> <C-n>
-
 " leader
 let mapleader=","
 
@@ -121,16 +109,29 @@ let g:indent_guides_enable_on_vim_startup=1 " auto-enable
 let g:indent_guides_start_level=1           " start guides at level 1
 let g:indent_guides_color_change_percent=3  " show very low-contrast guides
 
+" customize indent guide colors only in terminal
 if has("gui_running")
-    let g:indent_guides_auto_colors=1 " automatically determine colors
+    let g:indent_guides_auto_colors=1
 else
-    let g:indent_guides_auto_colors=0 " use custom colors in terminal
+    let g:indent_guides_auto_colors=0
     hi IndentGuidesOdd ctermbg=none
     hi IndentGuidesEven ctermbg=black
 endif
 
+" use tab for omni completion unless indenting
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<Tab>"
+    else
+        return "\<C-p>"
+    endif
+endfunction
+inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
+inoremap <S-Tab> <C-n>
+
+" use ⌘1 – ⌘9 to switch tabs
 if has("gui_macvim")
-    " press ⌘1 – ⌘9 to switch tabs
     nmap <D-1> 1gt
     nmap <D-2> 2gt
     nmap <D-3> 3gt
@@ -141,3 +142,4 @@ if has("gui_macvim")
     nmap <D-8> 8gt
     nmap <D-9> 9gt
 endif
+
