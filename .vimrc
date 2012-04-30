@@ -20,7 +20,7 @@ if has("gui_running")
     set guifont=Menlo:h16 " set font name and size
     set lines=999         " make the window as tall as possible
     set ruler             " show cursor coordinates (slows down terminal)
-    set showcmd           " show command in progress (slows down terminal)
+    set showcmd           " show command being typed (slows down terminal)
 endif
 
 " scrolling
@@ -35,7 +35,7 @@ set sidescroll=1     " scroll 1 column at a time
 set incsearch  " search while typing
 set hlsearch   " highlight all matches
 set ignorecase " case-insensitive search
-set smartcase  " case-sensitive if searching for uppercase
+set smartcase  " …unless searching for uppercase
 
 " tabs
 
@@ -48,7 +48,7 @@ set smartindent   " guess new indentation levels
 
 " command completion
 
-set wildmenu " use a menu to browse command completions
+set wildmenu                   " use a menu to browse command completions
 set wildmode=list:longest,full " complete longest common string, then list alternatives
 set wildignore=*.png,*.jpg,*.gif,.git,.svn
 
@@ -66,7 +66,7 @@ set t_Co=256    " enable 256-color terminal support
 
 syntax enable                  " turn on syntax highlighting
 set background=dark            " use a dark background
-let g:solarized_termcolors=256 " enable theme 256-color terminal support
+let g:solarized_termcolors=256 " enable theme's 256-color terminal support
 let g:solarized_termtrans=1    " use terminal's background instead of theme's
 colorscheme solarized          " set theme
 
