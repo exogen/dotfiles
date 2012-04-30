@@ -11,9 +11,10 @@ call pathogen#infect()         " activate pathogen.vim
 
 " interface
 
-set cursorline " highlight the line containing the cursor
-set number     " show line numbers
-set showmode   " show mode
+set cursorline   " highlight the line containing the cursor
+set number       " show line numbers
+set showmode     " show mode
+set laststatus=2 " always show status line
 
 if has("gui_running")
     set guioptions-=T     " hide the toolbar
@@ -93,7 +94,7 @@ let mapleader=","
 nmap <silent> <Leader>n :silent :nohlsearch<CR>
 
 " toggle trailing whitespace with ,s
-set listchars=tab:>-,trail:·,eol:$
+set listchars=tab:▸\ ,trail:·,eol:¬
 nmap <silent> <Leader>s :set nolist!<CR>
 
 " use tab for omni completion unless indenting
@@ -158,3 +159,8 @@ else
     hi IndentGuidesOdd ctermbg=none
     hi IndentGuidesEven ctermbg=black
 endif
+
+" fugitive plugin
+
+nmap <silent> <Leader>gs :Gstatus<CR>
+nmap <silent> <Leader>gb :Gblame<CR>
