@@ -14,6 +14,7 @@ call pathogen#infect()         " activate pathogen.vim
 set cursorline   " highlight the line containing the cursor
 set number       " show line numbers
 set showmode     " show mode
+set splitbelow   " open splits at the bottom
 set laststatus=2 " always show status line
 
 if has("gui_running")
@@ -88,10 +89,16 @@ augroup END
 
 " key mappings
 
+" move up/down by row, not by line (for wrapped lines)
+nnoremap j gj
+nnoremap k gk
+
+" set leader key
 let mapleader=","
 
 " toggle search highlighting with ,n
 nmap <silent> <Leader>n :silent :nohlsearch<CR>
+nmap <silent> <Leader>/ :silent :nohlsearch<CR>
 
 " toggle trailing whitespace with ,s
 set listchars=tab:▸\ ,trail:·,eol:¬
@@ -164,3 +171,4 @@ endif
 
 nmap <silent> <Leader>gs :Gstatus<CR>
 nmap <silent> <Leader>gb :Gblame<CR>
+nmap <silent> <Leader>gc :Gcommit<CR>
