@@ -71,11 +71,10 @@ let g:solarized_termtrans=1    " use terminal's background instead of theme's
 colorscheme solarized          " set theme
 
 " customize terminal color choices
-
 hi LineNr ctermbg=black
 hi CursorLine ctermbg=black
 
-" filetype settings
+" filetypes
 
 filetype plugin indent on
 
@@ -151,10 +150,10 @@ let g:indent_guides_start_level=1           " start guides at level 1
 let g:indent_guides_color_change_percent=3  " show very low-contrast guides
 
 if has("gui_running")
-    " auto detect guide colors
+    " automatically determine guide colors
     let g:indent_guides_auto_colors=1 
 else
-    " set custom guide colors in terminal
+    " customize guide colors in terminal
     let g:indent_guides_auto_colors=0
     hi IndentGuidesOdd ctermbg=none
     hi IndentGuidesEven ctermbg=black
