@@ -1,4 +1,4 @@
-I am a simple man. I use:
+I am but a simple man. I use:
 
 * OS X
 * Terminal.app
