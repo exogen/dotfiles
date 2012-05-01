@@ -2,7 +2,7 @@
 
 --color-filename=green
 --color-lineno=yellow
---color-match=red
+--color-match=white on_magenta
 
 --type-add=css=less
 --type-add=js=json
