@@ -64,4 +64,4 @@ function shorten_prompt_cwd {
     echo "${CWD:10}" | sed -e "s,\([.]*[^/]\)\([^/]*\)/,\1…/,g"
 }
 
-export PS1="\n\[${BLUE}\][ \$( shorten_prompt_cwd )\[${GREEN}\]\$(__git_ps1 ' ± %s') \[${BLUE}\]] \[${YELLOW}\]⚡\[${RESET}\] "
+export PS1="\n\[${BLUE}\][ \$( shorten_prompt_cwd )\[${GREEN}\]\$( __git_ps1 ' ± %s' | sed -e 's/[.]\{3\}/…/' ) \[${BLUE}\]] \[${YELLOW}\]⚡\[${RESET}\] "
