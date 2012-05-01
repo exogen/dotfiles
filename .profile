@@ -61,7 +61,7 @@ function shorten_prompt_cwd {
     # leave the first 10 characters alone
     echo -n "${CWD:0:10}"
     # truncate intermediate directories in the remaining string
-    echo "${CWD:10}" | sed -e "s,\([.]*[^/]\)\([^/]*\)/,\1…/,g"
+    echo "${CWD:10}" | sed -e "s,\([.]*[^/]\)\([^/][^/]*\)/,\1…/,g"
 }
 
 export PS1="\n\[${BLUE}\][ \$( shorten_prompt_cwd )\[${GREEN}\]\$( __git_ps1 ' ± %s' | sed -e 's/[.]\{3\}/…/' ) \[${BLUE}\]] \[${YELLOW}\]⚡\[${RESET}\] "
