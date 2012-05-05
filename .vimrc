@@ -104,6 +104,9 @@ nmap <silent> <Leader>/ :silent :nohlsearch<CR>
 set listchars=tab:▸\ ,trail:·,eol:¬
 nmap <silent> <Leader>s :set nolist!<CR>
 
+" find conflict markers with ,c
+nmap <silent> <Leader>c /^=======<CR>
+
 " use tab for omni completion unless indenting
 function! InsertTabWrapper()
     let col = col('.') - 1
