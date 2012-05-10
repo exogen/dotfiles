@@ -83,7 +83,6 @@ filetype plugin indent on
 augroup AutoFileType
     autocmd!
     autocmd FileType html setlocal softtabstop=2 shiftwidth=2 
-    autocmd BufNewFile,BufRead *.less setlocal filetype=css
     autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 augroup END
 
