@@ -42,6 +42,10 @@ alias ll="ls -al"
 alias ..="cd .."
 alias aircrack="aircrack-ng -f 16 -x2 /tmp/*.cap"
 
+function mkcd {
+    mkdir -p "$1" && cd "$1"
+}
+
 # completion
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -59,9 +63,9 @@ export PATH="$PATH:~/bin"
 function shorten_prompt_cwd {
     CWD=$(echo "$PWD" | sed -e "s,^$HOME,~,")
     # leave the first 10 characters alone
-    echo -n "${CWD:0:10}"
+    echo -n "${CWD:0:15}"
     # truncate intermediate directories in the remaining string
-    echo "${CWD:10}" | sed -e "s,\([.]*[^/]\)\([^/][^/]*\)/,\1…/,g"
+    echo "${CWD:15}" | sed -e "s,\([.]*[^/]\)\([^/][^/]*\)/,\1…/,g"
 }
 
 export PS1="\n\[${BLUE}\][ \$( shorten_prompt_cwd )\[${GREEN}\]\$( __git_ps1 ' ± %s' | sed -e 's/[.]\{3\}/…/' ) \[${BLUE}\]] \[${YELLOW}\]⚡\[${RESET}\] "

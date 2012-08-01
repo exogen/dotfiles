@@ -19,7 +19,7 @@ set laststatus=2 " always show status line
 
 if has("gui_running")
     set guioptions-=T     " hide the toolbar
-    set guifont=Menlo:h16 " set font name and size
+    set guifont=Menlo:h18 " set font name and size
     set lines=999         " make the window as tall as possible
     set ruler             " show cursor coordinates (slows down terminal)
     set showcmd           " show command being typed (slows down terminal)
@@ -52,7 +52,7 @@ set smartindent   " guess new indentation levels
 
 set wildmenu                   " use a menu to browse command completions
 set wildmode=list:longest,full " complete longest common string, then list alternatives
-set wildignore=*.png,*.jpg,*.gif,.git,.svn
+set wildignore=*.png,*.jpg,*.gif,.git,.svn,node_modules
 
 " swap files
 
