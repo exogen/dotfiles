@@ -11,7 +11,6 @@ shopt -s cdspell    # fix typos when changing directories
 export HISTFILESIZE=2000 # write more history
 export HISTSIZE=2000     # remember more history
 
-
 # colors
 
 export RESET='\e[0m'

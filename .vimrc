@@ -52,7 +52,7 @@ set smartindent   " guess new indentation levels
 
 set wildmenu                   " use a menu to browse command completions
 set wildmode=list:longest,full " complete longest common string, then list alternatives
-set wildignore=*.png,*.jpg,*.gif,.git,.svn,node_modules
+set wildignore=*.png,*.jpg,*.gif,.git,.svn,node_modules,site-packages
 
 " swap files
 
@@ -84,6 +84,7 @@ augroup AutoFileType
     autocmd!
     autocmd FileType html setlocal softtabstop=2 shiftwidth=2 
     autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+    autocmd BufNewFile,BufRead *.psql,*.pgsql,*.plpgsql setfiletype pgsql
 augroup END
 
 " key mappings
