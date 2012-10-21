@@ -170,8 +170,3 @@ else
     hi IndentGuidesEven ctermbg=black
 endif
 
-" fugitive plugin
-
-nmap <silent> <Leader>gs :Gstatus<CR>
-nmap <silent> <Leader>gb :Gblame<CR>
-nmap <silent> <Leader>gc :Gcommit<CR>
