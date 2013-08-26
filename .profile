@@ -53,7 +53,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
-. `which virtualenvwrapper.sh`
+. $(which virtualenvwrapper.sh)
 
 # path
 
