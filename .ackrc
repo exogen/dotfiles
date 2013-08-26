@@ -6,3 +6,4 @@
 
 --type-add=css=less
 --type-add=js=json
+--type-add=js=coffee
