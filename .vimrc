@@ -84,7 +84,7 @@ augroup AutoFileType
     autocmd!
     autocmd FileType html setlocal softtabstop=2 shiftwidth=2 
     autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-    autocmd BufNewFile,BufRead *.psql,*.pgsql,*.plpgsql setfiletype pgsql
+    autocmd BufNewFile,BufRead *.psql,*.pgsql,*.plpgsql setfiletype pgsql syntax=sql
 augroup END
 
 " key mappings
@@ -92,6 +92,9 @@ augroup END
 " move up/down by row, not by line (for wrapped lines)
 nnoremap j gj
 nnoremap k gk
+
+" make Y consistent with C and D
+nnoremap Y y$
 
 " set leader key
 let mapleader=","
@@ -106,6 +109,9 @@ nmap <silent> <Leader>s :set nolist!<CR>
 
 " find conflict markers with ,c
 nmap <silent> <Leader>c /^=======<CR>
+
+" format JSON
+nmap <Leader>j !python -m json.tool<CR>
 
 " use tab for omni completion unless indenting
 function! InsertTabWrapper()
