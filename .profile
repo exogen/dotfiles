@@ -41,17 +41,19 @@ alias ll="ls -al"
 alias ..="cd .."
 alias aircrack="aircrack-ng -f 16 -x2 /tmp/*.cap"
 
+# helpers
+
 function mkcd {
     mkdir -p "$1" && cd "$1"
 }
 
 # completion
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
 fi
 
-. ~/.local/git-completion.sh
+. `which virtualenvwrapper.sh`
 
 # path
 
