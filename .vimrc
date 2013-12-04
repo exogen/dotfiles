@@ -28,7 +28,7 @@ endif
 " scrolling
 
 set nostartofline    " remember cursor column when scrolling
-set scrolloff=8      " scroll when 8 lines from top or bottom
+set scrolloff=4      " scroll when 4 lines from top or bottom
 set sidescrolloff=15 " scroll when 15 columns from left or right
 set sidescroll=1     " scroll 1 column at a time
 
@@ -82,9 +82,10 @@ filetype plugin indent on
 
 augroup AutoFileType
     autocmd!
-    autocmd FileType html setlocal softtabstop=2 shiftwidth=2 
     autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
     autocmd BufNewFile,BufRead *.psql,*.pgsql,*.plpgsql setfiletype pgsql syntax=sql
+    autocmd BufNewFile,BufRead *.handlebars setfiletype html
+    autocmd FileType html setlocal softtabstop=2 shiftwidth=2
 augroup END
 
 " key mappings
