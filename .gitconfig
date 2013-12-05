@@ -1,0 +1,68 @@
+[user]
+    name = Brian Beck
+    email = exogen@gmail.com
+
+[color]
+    ui = true
+
+[color "branch"]
+    current = green
+    local = normal
+    remote = black bold
+
+[color "diff"]
+    meta = white
+    frag = black bold
+    old = red
+    new = green
+
+[color "status"]
+    added = green
+    changed = red bold
+    untracked = black bold
+
+[core]
+    editor = vim
+    pager = less -+$LESS -FRX
+
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    d = diff --patience
+    ds = diff --patience --staged
+    wd = diff --patience --word-diff=color
+    wds = diff --patience --staged --word-diff=color
+    full-diff = diff --patience -U9999
+    fd = diff --patience -U9999
+    amend = commit --amend
+    aa = add --all
+    au = add --update
+    ff = merge --ff-only
+    noff = merge --no-ff
+    pullff = pull --ff-only
+    pullrb = pull --rebase
+    l = "!source ~/.githelpers && pretty_git_log"
+    lg = "!source ~/.githelpers && pretty_git_log_graph"
+    b = branch
+    sp = stash pop
+    assume = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+
+[branch]
+    autosetupmerge = true
+
+[merge]
+    tool = vimdiff
+    summary = true
+    verbosity = 1
+
+[push]
+    default = upstream
+
+[apply]
+    whitespace = nowarn
+
+[advice]
+    statusHints = false

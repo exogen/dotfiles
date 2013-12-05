@@ -1,0 +1,27 @@
+#!/bin/bash
+
+HASH="%C(yellow)%h%C(reset)"
+TIMESTAMP="%C(8)%ar"
+AUTHOR="%C(blue)%an%C(reset)"
+REFS="%C(green)%d%C(reset)"
+SUBJECT="%C(normal)%s%C(reset)"
+
+GIT_LOG_FORMAT="{$HASH{$TIMESTAMP{$AUTHOR{$REFS $SUBJECT"
+
+function pretty_git_log() {
+    git log --pretty="tformat:$GIT_LOG_FORMAT" $* |
+    sed "s/, [0-9][0-9]* months\{0,1\} ago{/ ago{/" |
+    column -s "{" -t |
+    less -FXRS
+}
+
+function pretty_git_log_graph() {
+    git log --graph --pretty="tformat:$GIT_LOG_FORMAT" $* |
+    sed "s/^\([^{]\{8\}\)[^{]*/\1/" |
+    sed -e "s/[*]/•/ ; s/[|]/│/g ; s/[/]/╱/g ; s/[\]/╲/g" | # FIXME
+    sed "s/, [0-9][0-9]* months\{0,1\} ago{/ ago{/" |
+    column -s "{" -t |
+    sed "s/^/$(echo \\033[90m)/" |
+    less -FXRS
+}
+
