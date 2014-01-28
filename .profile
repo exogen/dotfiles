@@ -39,7 +39,8 @@ export LESS_TERMCAP_us=$'\e[4;38;5;146m' # begin underline
 
 alias ll="ls -al"
 alias ..="cd .."
-alias aircrack="aircrack-ng -f 16 -x2 /tmp/*.cap"
+alias s="git status"
+alias d="git diff"
 
 # helpers
 
