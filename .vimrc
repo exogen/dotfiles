@@ -75,6 +75,7 @@ colorscheme solarized          " set theme
 " customize terminal color choices
 hi LineNr ctermbg=black
 hi CursorLine ctermbg=black
+hi CursorLineNr cterm=none gui=none ctermfg=white guifg=white
 
 " filetypes
 
