@@ -4,6 +4,6 @@
 --color-lineno=yellow
 --color-match=white on_magenta
 
---type-add=css=less
---type-add=js=json
---type-add=js=coffee
+--type-add=js:firstlinematch:/^#!.*\bnode/
+--type-add=coffee:ext:coffee
+--type-add=coffee:firstlinematch:/^#!.*\bcoffee/
