@@ -60,6 +60,10 @@ fi
 
 export PATH="$PATH:~/bin"
 
+# preferences
+
+export EDITOR=vim
+
 # prompt
 
 function shorten_prompt_cwd {
