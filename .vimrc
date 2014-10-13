@@ -86,7 +86,7 @@ augroup AutoFileType
     autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
     autocmd BufNewFile,BufRead *.psql,*.pgsql,*.plpgsql setfiletype pgsql syntax=sql
     autocmd BufNewFile,BufRead *.handlebars setfiletype html
-    autocmd FileType html setlocal softtabstop=2 shiftwidth=2
+    autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 " key mappings

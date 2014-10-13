@@ -58,7 +58,7 @@ fi
 
 # path
 
-export PATH="$PATH:~/bin"
+export PATH="$PATH:$HOME/bin"
 
 # preferences
 
