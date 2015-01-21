@@ -54,7 +54,9 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
-. $(which virtualenvwrapper.sh)
+if [ -f $(which virtualenvwrapper.sh) ]; then
+    . $(which virtualenvwrapper.sh)
+fi
 
 # path
 

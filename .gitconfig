@@ -46,9 +46,7 @@
     lg = "!source ~/.githelpers && pretty_git_log_graph"
     b = branch
     sp = stash pop
-    assume = update-index --assume-unchanged
-    unassume = update-index --no-assume-unchanged
-    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+    up = "!git remote update -p; git merge --ff-only @{u}"
 
 [branch]
     autosetupmerge = true
@@ -58,11 +56,11 @@
     summary = true
     verbosity = 1
 
-[push]
-    default = upstream
-
 [apply]
     whitespace = nowarn
 
 [advice]
     statusHints = false
+
+[push]
+    default = current

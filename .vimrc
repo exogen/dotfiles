@@ -113,7 +113,10 @@ nmap <silent> <Leader>s :set nolist!<CR>
 nmap <silent> <Leader>c /^=======<CR>
 
 " format JSON
-nmap <Leader>j !python -m json.tool<CR>
+nmap <Leader>j :%!python -m json.tool<CR>
+
+" JSON codepoint to unicode
+nmap <Leader>u :s#\v\\u([0-9a-f]{4})#\=nr2char(str2nr(submatch(1),16))#<CR>
 
 " use tab for omni completion unless indenting
 function! InsertTabWrapper()
@@ -142,9 +145,10 @@ endif
 
 " command-t plugin
 
-let g:CommandTMaxFiles=2000 " don't scan more than 2000 files (for speed)
-let g:CommandTMaxHeight=8   " don't grow more than 8 lines
-let g:CommandTMinHeight=8   " don't shrink less than 8 lines
+let g:CommandTMaxFiles=2000     " don't scan more than 2000 files (for speed)
+let g:CommandTMaxHeight=8       " don't grow more than 8 lines
+let g:CommandTMinHeight=8       " don't shrink less than 8 lines
+let g:CommandTTraverseSCM="pwd" " limit scope to working directory
 
 " use the default key mappings
 nnoremap <silent> <Leader>t :CommandT<CR>
