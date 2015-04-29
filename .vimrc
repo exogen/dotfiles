@@ -52,7 +52,7 @@ set smartindent   " guess new indentation levels
 
 set wildmenu                   " use a menu to browse command completions
 set wildmode=list:longest,full " complete longest common string, then list alternatives
-set wildignore=*.png,*.jpg,*.gif,.git,.svn,node_modules,site-packages
+set wildignore+=*.png,*.jpg,*.gif,*.pyc,.git,.svn,node_modules,site-packages
 
 " swap files
 
@@ -83,9 +83,11 @@ filetype plugin indent on
 
 augroup AutoFileType
     autocmd!
-    autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-    autocmd BufNewFile,BufRead *.psql,*.pgsql,*.plpgsql setfiletype pgsql syntax=sql
-    autocmd BufNewFile,BufRead *.handlebars setfiletype html
+    autocmd BufNewFile,BufRead,BufFilePost *.json setfiletype json
+    autocmd BufNewFile,BufRead,BufFilePost *.psql,*.pgsql,*.plpgsql setfiletype pgsql
+    autocmd BufNewFile,BufRead,BufFilePost *.handlebars setfiletype html
+    autocmd FileType json setlocal syntax=javascript
+    autocmd FileType pgsql setlocal syntax=sql
     autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
@@ -143,26 +145,20 @@ if has("gui_macvim")
     nmap <D-9> 9gt
 endif
 
-" command-t plugin
+" ctrl-p plugin
 
-let g:CommandTMaxFiles=2000     " don't scan more than 2000 files (for speed)
-let g:CommandTMaxHeight=8       " don't grow more than 8 lines
-let g:CommandTMinHeight=8       " don't shrink less than 8 lines
-let g:CommandTTraverseSCM="pwd" " limit scope to working directory
-
-" use the default key mappings
-nnoremap <silent> <Leader>t :CommandT<CR>
-nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+nnoremap <silent> <Leader>e :CtrlPMixed<CR>
+nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 
 if has("gui_macvim")
     " use ⌘E to activate as well (keep ⌘T for New Tab)
-    map <D-e> :CommandT<CR>
+    map <D-e> :CtrlPCurWD<CR>
 
-    " flush buffer when there may be new files
+    " clear cache when there may be new files
     augroup AutoFlush
       autocmd!
-      autocmd FocusGained * CommandTFlush  " flush on window focus
-      autocmd BufWritePost * CommandTFlush " flush on write file
+      autocmd FocusGained * CtrlPClearCache  " flush on window focus
+      autocmd BufWritePost * CtrlPClearCache " flush on write file
     augroup END
 endif
 
