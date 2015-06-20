@@ -1,0 +1,57 @@
+"*":
+  welcome:
+    showOnStartup: false
+  core:
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svg"
+      ".DS_Store"
+      "*.pyc"
+      "__pycache__"
+    ]
+    disabledPackages: [
+      "ex-mode"
+      "vim-mode"
+    ]
+  editor:
+    fontFamily: "Menlo"
+    invisibles: {}
+    showIndentGuide: true
+    tabLength: 4
+  linter: {}
+  "linter-jshint":
+    disableWhenNoJshintrcFileInPath: true
+  "autocomplete-plus": {}
+  "css-comb":
+    config: "common"
+  "isotope-ui":
+    backgroundColor: "false"
+    fontFamily: "Oxygen"
+    fontWeight: "Regular"
+    backgroundGradient: true
+  "file-icons": {}
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+  "vim-mode":
+    useSmartcaseForSearch: true
+    startInInsertMode: true
+  "one-dark-ui": {}
+  tabs:
+    usePreviewTabs: true
+".basic.html.text":
+  editor:
+    tabLength: 2
+".clojure.source":
+  editor:
+    tabLength: 2
+".coffee.source":
+  editor:
+    tabLength: 2
+".litcoffee.source":
+  editor:
+    tabLength: 2
+".text.xml":
+  editor:
+    tabLength: 2
