@@ -41,11 +41,27 @@ alias ll="ls -al"
 alias ..="cd .."
 alias s="git status"
 alias d="git diff"
+alias ag="ag --color-path='32' --color-line-number='33' --color-match='37;45'"
+alias get="http --download"
 
 # helpers
 
 function mkcd {
     mkdir -p "$1" && cd "$1"
+}
+
+function play {
+    youtube-dl --default-search=ytsearch: \
+               --restrict-filenames \
+               --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
+               --exec=afplay "$*"
+}
+
+function mp3 {
+    youtube-dl --default-search=ytsearch: \
+               --extract-audio \
+               --audio-format=mp3 \
+               --audio-quality=2 "$*"
 }
 
 # completion
@@ -54,8 +70,8 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
-if [ -f $(which virtualenvwrapper.sh) ]; then
-    . $(which virtualenvwrapper.sh)
+if [ -f $HOME/.local/git-completion.sh ]; then
+    . $HOME/.local/git-completion.sh
 fi
 
 # path
