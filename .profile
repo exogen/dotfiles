@@ -66,7 +66,7 @@ function mp3 {
 }
 
 function workon {
-    name="${1:-$(basename "$PWD")}"
+    local name="${1:-$(basename "$PWD")}"
     source "$HOME/.pyvenv/$name/bin/activate"
 }
 
