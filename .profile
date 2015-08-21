@@ -43,6 +43,7 @@ alias s="git status"
 alias d="git diff"
 alias ag="ag --color-path='32' --color-line-number='33' --color-match='37;45'"
 alias get="http --download"
+alias mkvenv="mkenv"
 
 # helpers
 
@@ -64,6 +65,15 @@ function mp3 {
                --audio-quality=2 "$*"
 }
 
+function workon {
+    name="${1:-$(basename "$PWD")}"
+    source "$HOME/.pyvenv/$name/bin/activate"
+}
+
+function mkenv {
+    pyvenv "$HOME/.pyvenv/$1"
+}
+
 # completion
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -73,6 +83,16 @@ fi
 if [ -f $HOME/.local/git-completion.sh ]; then
     . $HOME/.local/git-completion.sh
 fi
+
+eval "$(pip completion --bash)"
+
+function _workon {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=($(compgen -W "$(ls $HOME/.pyvenv)" -- $cur))
+}
+
+complete -F _workon workon
+
 
 # path
 
