@@ -1,0 +1,9 @@
+
+// Put this file at ~/Library/KeyBindings/DefaultKeyBinding.dict
+// You may need to run: mkdir ~/Library/KeyBindings
+{
+    "~[" = (insertText:, "\U2018");
+    "~]" = (insertText:, "\U2019");
+    "~{" = (insertText:, "\U201c");
+    "~}" = (insertText:, "\U201d");
+}

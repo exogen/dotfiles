@@ -53,13 +53,18 @@ function mkcd {
 
 function play {
     youtube-dl --default-search=ytsearch: \
-               --restrict-filenames \
+               --youtube-skip-dash-manifest \
                --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
+               --restrict-filenames \
+               --format bestaudio \
                --exec=afplay "$*"
 }
 
 function mp3 {
     youtube-dl --default-search=ytsearch: \
+               --youtube-skip-dash-manifest \
+               --restrict-filenames \
+               --format=best-audio \
                --extract-audio \
                --audio-format=mp3 \
                --audio-quality=2 "$*"
@@ -75,6 +80,10 @@ function mkenv {
 }
 
 # completion
+
+if [ -f $(which npm) ]; then
+    eval "$(npm completion)"
+fi
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
@@ -96,7 +105,7 @@ complete -F _workon workon
 
 # path
 
-export PATH="$PATH:$HOME/bin"
+export PATH="./node_modules/.bin:$PATH:$HOME/bin"
 
 # preferences
 
