@@ -52,11 +52,13 @@ function mkcd {
 }
 
 function play {
+    # Skip dash manifest for speed purposes.
+    # Get the best audio that isn't webm, because afplay doesn't support it.
     youtube-dl --default-search=ytsearch: \
                --youtube-skip-dash-manifest \
                --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
                --restrict-filenames \
-               --format bestaudio \
+               --format="bestaudio[ext!=webm]" \
                --exec=afplay "$*"
 }
 
@@ -64,10 +66,10 @@ function mp3 {
     youtube-dl --default-search=ytsearch: \
                --youtube-skip-dash-manifest \
                --restrict-filenames \
-               --format=best-audio \
+               --format=bestaudio \
                --extract-audio \
                --audio-format=mp3 \
-               --audio-quality=2 "$*"
+               --audio-quality=1 "$*"
 }
 
 function workon {
