@@ -52,8 +52,11 @@ function mkcd {
 }
 
 function play {
-    # Skip dash manifest for speed purposes.
-    # Get the best audio that isn't webm, because afplay doesn't support it.
+    # Skip DASH manifest for speed purposes. This might actually disable
+    # being able to specify things like 'bestaudio' as the requested format,
+    # but try anyway.
+    # Get the best audio that isn't WebM, because afplay doesn't support it.
+    # Use "$*" so that quoting the requested song isn't necessary.
     youtube-dl --default-search=ytsearch: \
                --youtube-skip-dash-manifest \
                --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
@@ -63,8 +66,9 @@ function play {
 }
 
 function mp3 {
+    # Get the best audio, convert it to MP3, and save it to the current
+    # directory.
     youtube-dl --default-search=ytsearch: \
-               --youtube-skip-dash-manifest \
                --restrict-filenames \
                --format=bestaudio \
                --extract-audio \
