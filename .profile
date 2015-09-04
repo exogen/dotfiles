@@ -48,7 +48,18 @@ alias mkvenv="mkenv"
 # helpers
 
 function mkcd {
+    # Make a directory and change to it.
     mkdir -p "$1" && cd "$1"
+}
+
+function sec {
+    # Convert seconds since UNIX Epoch to a readable date.
+    date -j -r "$1"
+}
+
+function ms {
+    # Convert milliseconds since UNIX Epoch to a readable date.
+    date -j -r "$(($1/1000))"
 }
 
 function play {
