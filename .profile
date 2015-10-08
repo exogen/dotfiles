@@ -70,7 +70,7 @@ function play {
     # Use "$*" so that quoting the requested song isn't necessary.
     youtube-dl --default-search=ytsearch: \
                --youtube-skip-dash-manifest \
-               --output="${TMPDIR:-/tmp/}%(title)s-%(id)s.%(ext)s" \
+               --output="${TMPDIR:-/tmp}/%(title)s-%(id)s.%(ext)s" \
                --restrict-filenames \
                --format="bestaudio[ext!=webm]" \
                --exec=afplay "$*"
