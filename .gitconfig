@@ -1,6 +1,6 @@
 [user]
-    name = Brian Beck
-    email = exogen@gmail.com
+	name = Brian Beck
+	email = exogen@gmail.com
 
 [color]
     ui = true
@@ -63,4 +63,8 @@
     statusHints = false
 
 [push]
-    default = current
+	default = current
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
