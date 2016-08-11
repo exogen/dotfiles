@@ -1,10 +1,13 @@
 
 # shell options
 
-shopt -s histappend # append instead of overwrite history
-shopt -s cmdhist    # properly save multi-line commands
-shopt -s lithist    # don't replace newlines with semicolons in history
-shopt -s cdspell    # fix typos when changing directories
+shopt -s histappend    # append instead of overwrite history
+shopt -s cmdhist       # properly save multi-line commands
+shopt -s lithist       # don't replace newlines with semicolons in history
+shopt -s cdspell       # fix typos when changing directories
+shopt -u hostcomplete  # disable hostname completion, which is fine but
+                       # interferes with completion of paths containing '@',
+                       # like scoped npm modules
 
 # history
 
