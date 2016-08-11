@@ -46,7 +46,6 @@ alias s="git status"
 alias d="git diff"
 alias ag="ag --color-path='32' --color-line-number='33' --color-match='37;45'"
 alias get="http --download"
-alias mkvenv="mkenv"
 
 # helpers
 
@@ -90,13 +89,11 @@ function mp3 {
                --audio-quality=1 "$*"
 }
 
-function workon {
-    local name="${1:-$(basename "$PWD")}"
-    source "$HOME/.pyvenv/$name/bin/activate"
-}
-
-function mkenv {
-    pyvenv "$HOME/.pyvenv/$1"
+function dirdiff {
+    diff --unified --new-file --recursive \
+        --exclude .git \
+        --exclude node_modules \
+        "$1" "$2" ${@:3} | colordiff
 }
 
 # completion
@@ -107,6 +104,10 @@ fi
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
+fi
+
+if [ -f $(brew --prefix)/etc/profile.d/z.sh ]; then
+    . $(brew --prefix)/etc/profile.d/z.sh
 fi
 
 if [ -f $HOME/.local/git-completion.sh ]; then
