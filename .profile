@@ -112,8 +112,14 @@ function dirdiff {
 
 # completion
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+if [ -f $(which npm) ]; then
+    eval "$(npm completion)"
+fi
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+if [ -f $(which pip3) ]; then
+    eval "$(pip3 completion --bash)"
 fi
 
 # path
@@ -135,3 +141,8 @@ function shorten_prompt_cwd {
 }
 
 export PS1="\n\[${BLUE}\][ \$( shorten_prompt_cwd )\[${GREEN}\]\$( __git_ps1 ' ± %s' | sed -e 's/[.]\{3\}/…/' ) \[${BLUE}\]] \[${YELLOW}\]⚡\[${RESET}\] "
+
+# node environments
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
