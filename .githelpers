@@ -18,10 +18,9 @@ function pretty_git_log() {
 function pretty_git_log_graph() {
     git log --graph --pretty="tformat:$GIT_LOG_FORMAT" $* |
     sed "s/^\([^{]\{8\}\)[^{]*/\1/" |
-    sed -e "s/[*]/•/ ; s/[|]/│/g ; s/[/]/╱/g ; s/[\]/╲/g" | # FIXME
+    sed -e "s/[*]/•/" |
     sed "s/, [0-9][0-9]* months\{0,1\} ago{/ ago{/" |
     column -s "{" -t |
     sed "s/^/$(echo \\033[90m)/" |
     less -FXRS
 }
-

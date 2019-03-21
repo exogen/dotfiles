@@ -3,67 +3,69 @@
 	email = exogen@gmail.com
 
 [color]
-    ui = true
+	ui = true
 
 [color "branch"]
-    current = green
-    local = normal
-    remote = black bold
+	current = green
+	local = normal
+	remote = black bold
 
 [color "diff"]
-    meta = white
-    frag = black bold
-    old = red
-    new = green
+	meta = white
+	frag = black bold
+	old = red
+	new = green
 
 [color "status"]
-    added = green
-    changed = red bold
-    untracked = black bold
+	added = green
+	changed = red bold
+	untracked = black bold
 
 [core]
-    editor = vim
-    pager = less -+$LESS -FRX
+	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	autocrlf = input
 
 [alias]
-    st = status
-    ci = commit
-    co = checkout
-    d = diff --patience
-    ds = diff --patience --staged
-    wd = diff --patience --word-diff=color
-    wds = diff --patience --staged --word-diff=color
-    full-diff = diff --patience -U9999
-    fd = diff --patience -U9999
-    amend = commit --amend
-    aa = add --all
-    au = add --update
-    ff = merge --ff-only
-    noff = merge --no-ff
-    pullff = pull --ff-only
-    pullrb = pull --rebase
-    l = "!source ~/.githelpers && pretty_git_log"
-    lg = "!source ~/.githelpers && pretty_git_log_graph"
-    b = branch
-    sp = stash pop
-    up = "!git remote update -p; git merge --ff-only @{u}"
+	st = status
+	ci = commit
+	co = checkout
+	d = diff --patience
+	ds = diff --patience --staged
+	wd = diff --patience --word-diff=color
+	wds = diff --patience --staged --word-diff=color
+	full-diff = diff --patience -U9999
+	fd = diff --patience -U9999
+	amend = commit --amend
+	aa = add --all
+	au = add --update
+	ff = merge --ff-only
+	noff = merge --no-ff
+	pullff = pull --ff-only
+	pullrb = pull --rebase
+	l = "!source ~/.githelpers && pretty_git_log"
+	lg = "!source ~/.githelpers && pretty_git_log_graph"
+	b = branch
+	sp = stash pop
+	up = "!git remote update -p; git merge --ff-only @{u}"
+	please = push --force-with-lease
+	commend = commit --amend --no-edit
+	rearrange = rebase -i $(git merge-base HEAD @{u})
 
 [branch]
-    autosetupmerge = true
+	autosetupmerge = true
 
 [merge]
-    tool = vimdiff
-    summary = true
-    verbosity = 1
-
-[apply]
-    whitespace = nowarn
+	tool = vimdiff
+	summary = true
+	verbosity = 1
 
 [advice]
-    statusHints = false
+	statusHints = false
 
 [push]
 	default = current
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f

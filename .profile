@@ -11,8 +11,12 @@ shopt -u hostcomplete  # disable hostname completion, which is fine but
 
 # history
 
-export HISTFILESIZE=2000 # write more history
-export HISTSIZE=2000     # remember more history
+export HISTFILESIZE=8000              # write more history
+export HISTSIZE=8000                  # remember more history
+export HISTCONTROL=ignoreboth         # ignore commands beginning with a space
+                                      # and duplicates
+export HISTIGNORE='ls:bg:fg:history'  # ignore lame commands
+export PROMPT_COMMAND='history -a'    # store history immediately
 
 # colors
 
@@ -30,13 +34,19 @@ export CLICOLOR=1
 
 # configure colors for less (man pages, searching, etc.)
 
-export LESS_TERMCAP_mb=$'\e[1;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\e[1;38;5;74m'  # begin bold
-export LESS_TERMCAP_me=$'\e[0m'          # end mode
-export LESS_TERMCAP_se=$'\e[0m'          # end standout-mode
-export LESS_TERMCAP_so=$'\e[0;37;45m'    # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\e[0m'          # end underline
-export LESS_TERMCAP_us=$'\e[4;38;5;146m' # begin underline
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 1)    # red
+export LESS_TERMCAP_md=$(tput bold; tput setaf 4)    # blue
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput setaf 7; tput setab 5) # white on magenta
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput setaf 7)    # white
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
 
 # aliases
 
@@ -91,38 +101,20 @@ function mp3 {
 
 function dirdiff {
     diff --unified --new-file --recursive \
+        --exclude .eslintcache \
         --exclude .git \
+        --exclude coverage \
         --exclude node_modules \
+        --exclude package-lock.json \
+        --exclude yarn.lock \
         "$1" "$2" ${@:3} | colordiff
 }
 
 # completion
 
-if [ -f $(which npm) ]; then
-    eval "$(npm completion)"
-fi
-
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
-
-if [ -f $(brew --prefix)/etc/profile.d/z.sh ]; then
-    . $(brew --prefix)/etc/profile.d/z.sh
-fi
-
-if [ -f $HOME/.local/git-completion.sh ]; then
-    . $HOME/.local/git-completion.sh
-fi
-
-eval "$(pip completion --bash)"
-
-function _workon {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=($(compgen -W "$(ls $HOME/.pyvenv)" -- $cur))
-}
-
-complete -F _workon workon
-
 
 # path
 
