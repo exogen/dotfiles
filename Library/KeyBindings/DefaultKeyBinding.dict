@@ -1,5 +1,6 @@
 
 // Put this file at ~/Library/KeyBindings/DefaultKeyBinding.dict
+// Copy it, don't symlink - some apps respect the symlink and some don't.
 // You may need to run: mkdir ~/Library/KeyBindings
 {
     "~[" = (insertText:, "\U2018");
