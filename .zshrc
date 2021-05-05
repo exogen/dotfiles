@@ -24,7 +24,6 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 
 # aliases
-
 alias ll="ls -al"
 alias ..="cd .."
 alias s="git status"
@@ -33,17 +32,22 @@ alias ag="ag --color-path='32' --color-line-number='33' --color-match='37;45'"
 alias get="http --download"
 
 # path
-
 export PATH="./node_modules/.bin:$PATH:$HOME/.bin"
 
 # nvm
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# prompt
+# tab title settings for iTerm
+DISABLE_AUTO_TITLE="true"
 
+precmd() {
+  # Sets the tab title to current directory, not full path
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
+# prompt
 source ~/.bin/git-prompt.sh
 
 function shorten_prompt_cwd {
