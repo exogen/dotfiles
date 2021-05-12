@@ -1,11 +1,20 @@
 # load completion
 autoload -Uz compinit && compinit
 
-# enable command substitution in prompts
-setopt PROMPT_SUBST
-
 # case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+# key bindings
+bindkey "^R" history-incremental-search-backward
+bindkey "\e[A" history-beginning-search-backward
+bindkey "\e[B" history-beginning-search-forward
+
+# history
+HISTSIZE=100000000
+SAVEHIST=100000000
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
 
 # configure colors for less (man pages, searching, etc.)
 export CLICOLOR=1
@@ -48,8 +57,14 @@ precmd() {
 }
 
 # prompt
+
+# enable command substitution in prompts
+setopt PROMPT_SUBST
+
+# add __git_ps1 command
 source ~/.bin/git-prompt.sh
 
+# trim cwd to a nice length
 function shorten_prompt_cwd {
     CWD=$(echo "$PWD" | sed -e "s,^$HOME,~,")
     # leave the first 10 characters alone
