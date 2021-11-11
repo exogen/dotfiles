@@ -52,7 +52,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 
 alias ll="ls -al"
 alias ..="cd .."
-alias s="git status"
+alias s="s"
 alias d="git diff"
 alias ag="ag --color-path='32' --color-line-number='33' --color-match='37;45'"
 alias get="http --download"
