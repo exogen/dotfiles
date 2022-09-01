@@ -40,13 +40,14 @@ alias d="git diff"
 alias ag="ag --color-path='32' --color-line-number='33' --color-match='37;45'"
 alias get="http --download"
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # path
 export PATH="./node_modules/.bin:$PATH:$HOME/.bin"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# node version manager
+eval "$(fnm env)"
 
 # tab title settings for iTerm
 DISABLE_AUTO_TITLE="true"
